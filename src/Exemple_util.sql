@@ -14,12 +14,7 @@ FROM Pokedex
 WHERE idPokedex = 04 ;
 
 -- On essaie de capturer un pokemon non vu pour le trigger
--- !! ne marche pas -> malgré condition apercu = 0, le trigger ne se declanche pas
--- + met le numéro du specimen a 25 alors que la fonction permet de le mettre au nombre de pokemon dans specimen +1, et egalement un trigger pour s'en assurer
-
--- afin de verifier ces conditions, verifier avec les prochaines commandes les données (les memes que ce qui est données dans les fonctions)
-
---pour la mise a jour du numero du specimen
+-- pour la mise a jour du numero du specimen
     SELECT nbPokemonCapture
     FROM Pokedex
     WHERE Pokedex.idPokemon = 01 AND Pokedex.idPokedex = 04 AND Pokedex.idDresseur = 108 ;   
