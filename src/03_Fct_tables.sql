@@ -44,6 +44,16 @@ CREATE VIEW Information_Dresseur AS
 ;
 -- Fonction / Procedure
 
+-- Permet de creer le pokedex en meme temps que le dresseur
+CREATE OR REPLACE TRIGGER fill_pokedex_trigger
+AFTER INSERT ON Dresseur
+FOR EACH ROW
+BEGIN
+  INSERT INTO Pokedex (idPokedex, idPokemon, idDresseur, apercu, capture, nbPokemonApercu, nbPokemonCapture)
+  SELECT :NEW.idPokedex, p.idPokemon, :NEW.idDresseur, 0, 0, 0, 0
+  FROM Pokemon p;
+END;
+/
 
 -- Met a jour le nombre de pokemon apercu en fonction des 1 dans la colonne d'un pokedex
 CREATE OR REPLACE PROCEDURE UpdateNbPokemonApercuAll (
